@@ -1,7 +1,7 @@
 # MasterMinter contract
 
 The MasterMinter is a governance contract. It delegates the functionality of the
-`masterMinter` role in the CENTRE USDC contract to multiple addresses. (The
+`masterMinter` role in the TypeX USDC contract to multiple addresses. (The
 `masterMinter` role can add and remove minters from a FiatToken and set their
 allowances.) The MasterMinter contract delegates the minter management
 capability to `controllers`. Each `controller` manages exactly one `minter`, and
