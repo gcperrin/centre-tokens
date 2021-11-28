@@ -7,7 +7,7 @@ fixed or features added.
 
 ## Roles
 
-The `NATGXToken` has a number of roles (addresses) which control different
+The `NATGX Token` has a number of roles (addresses) which control different
 functionality:
 
 - `masterMinter` - adds and removes minters and increases their minting
@@ -25,7 +25,7 @@ controlled by the entities that TypeX elects to make minters
 
 ## ERC-20
 
-The `NATGXToken` implements the standard methods of the ERC-20 interface with
+The `NATGX Token` implements the standard methods of the ERC-20 interface with
 some changes:
 
 - A blacklisted address will be unable to call `transfer`, `transferFrom`, or
@@ -161,14 +161,14 @@ is unpaused.
 
 The NATGX Token uses the zeppelinos Unstructured-Storage Proxy pattern
 [https://docs.zeppelinos.org/docs/upgradeability_AdminUpgradeabilityProxy.html].
-[NATGXTokenV1.sol](../contracts/FiatTokenV1.sol) is the implementation, the
+[NATGX TokenV1.sol](../contracts/FiatTokenV1.sol) is the implementation, the
 actual token will be a Proxy contract
 
 Note that this is how USDC appears to be deployed currently
 
 
-([NATGXTokenProxy.sol](../contracts/FiatTokenProxy.sol)) which will forward all
-calls to `NATGXToken` via delegatecall. This pattern allows TypeX to upgrade the
+([NATGX TokenProxy.sol](../contracts/FiatTokenProxy.sol)) which will forward all
+calls to `NATGX Token` via delegatecall. This pattern allows TypeX to upgrade the
 logic of any deployed tokens seamlessly.
 
 - TypeX will upgrade the token via a call to `upgradeTo` or `upgradeToAndCall`

@@ -2,14 +2,14 @@
 
 The MasterMinter is a governance contract. It delegates the functionality of the
 `masterMinter` role in the TypeX NATGX contract to multiple addresses. (The
-`masterMinter` role can add and remove minters from a NATGXToken and set their
+`masterMinter` role can add and remove minters from a NATGX Token and set their
 allowances.) The MasterMinter contract delegates the minter management
 capability to `controllers`. Each `controller` manages exactly one `minter`, and
 a single `minter` may be managed by multiple `controllers`. This allows
 separation of duties (off-line key management) and simplifies nonce management
 for warm transactions.
 
-Minters and NATGXToken holders are not affected by replacing a `masterMinter`
+Minters and NATGX Token holders are not affected by replacing a `masterMinter`
 user address with a `MasterMinter` contract.
 
 # Roles
@@ -27,13 +27,13 @@ The `MasterMinter` contract has the following roles:
   appropriate functions on the `minterManager`.
 - `minter` - each `minter` is managed by one or more `controller`. The `minter`
   cannot perform any actions on the MasterMinter contract. It interacts only
-  with the NATGXToken contract.
+  with the NATGX Token contract.
 
-# Interaction with NATGXToken contract
+# Interaction with NATGX Token contract
 
-The `owner` of the NATGXToken contract can set the `masterMinter` role to point
+The `owner` of the NATGX Token contract can set the `masterMinter` role to point
 to the address of the `MasterMinter` contract. This enables the `MasterMinter`
-contract to call minter management functions on the NATGXToken contract:
+contract to call minter management functions on the NATGX Token contract:
 
 - `configureMinter(minter, allowance)` - Enables the `minter` and sets its
   minting allowance.
@@ -49,8 +49,8 @@ The `MasterMinter` contains the address of a `minterManager` that implements the
 via the `minterManager`.
 
 When a `controller` calls a function on `MasterMinter`, the `MasterMinter` will
-call the appropriate function on the `NATGXToken` contract on its behalf. Both
-the `MasterMinter` and the `NATGXToken` do their own access control.
+call the appropriate function on the `NATGX Token` contract on its behalf. Both
+the `MasterMinter` and the `NATGX Token` do their own access control.
 
 # Function Summary
 
@@ -80,19 +80,19 @@ the `MasterMinter` and the `NATGXToken` do their own access control.
 
 # Deployment
 
-The `MasterMinter` may be deployed independently of the `NATGXToken` contract
+The `MasterMinter` may be deployed independently of the `NATGX Token` contract
 (e.g. NATGX).
 
-- <b>NATGXToken</b> then <b>MasterMinter.</b> Deploy `MasterMinter` and set the
-  `minterManager` to point to the `NATGXToken` in the constructor. Then use the
+- <b>NATGX Token</b> then <b>MasterMinter.</b> Deploy `MasterMinter` and set the
+  `minterManager` to point to the `NATGX Token` in the constructor. Then use the
   `MasterMinter` `owner` role to configure at least one `controller` for each
-  existing `minter` in the `NATGXToken`. Once the `MasterMinter` is fully
-  configured, use the `NATGXToken` `owner` role to broadcast an
+  existing `minter` in the `NATGX Token`. Once the `MasterMinter` is fully
+  configured, use the `NATGX Token` `owner` role to broadcast an
   `updateMasterMinter` transaction setting `masterMinter` role to the
   `MasterMinter` contract address.
-- <b>MasterMinter</b> then <b>NATGXToken.</b> Deploy `MasterMinter` and set the
+- <b>MasterMinter</b> then <b>NATGX Token.</b> Deploy `MasterMinter` and set the
   `minterManager` to point to address `0x00` in the constructor. Then deploy the
-  `NATGXToken` and set the `masterMinter` to be the address of the `MasterMinter`
+  `NATGX Token` and set the `masterMinter` to be the address of the `MasterMinter`
   contract in the constructor. Next, use the `MasterMinter` `owner` to set the
   `minterManager` and configure `controllers`.
 
