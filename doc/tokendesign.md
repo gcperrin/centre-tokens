@@ -1,13 +1,13 @@
-# TypeX Fiat Token
+# TypeX NATGX Token
 
-The TypeX Fiat Token contract is an ERC-20 compatible token. It allows
+The TypeX NATGX Token contract is an ERC-20 compatible token. It allows
 minting/burning of tokens by multiple entities, pausing all activity, freezing
 of individual addresses, and a way to upgrade the contract so that bugs can be
 fixed or features added.
 
 ## Roles
 
-The `FiatToken` has a number of roles (addresses) which control different
+The `NATGXToken` has a number of roles (addresses) which control different
 functionality:
 
 - `masterMinter` - adds and removes minters and increases their minting
@@ -25,7 +25,7 @@ controlled by the entities that TypeX elects to make minters
 
 ## ERC-20
 
-The `FiatToken` implements the standard methods of the ERC-20 interface with
+The `NATGXToken` implements the standard methods of the ERC-20 interface with
 some changes:
 
 - A blacklisted address will be unable to call `transfer`, `transferFrom`, or
@@ -35,7 +35,7 @@ some changes:
 
 ## Issuing and Destroying tokens
 
-The Fiat Token allows multiple entities to create and destroy tokens. These
+The NATGX Token allows multiple entities to create and destroy tokens. These
 entities will have to be members of TypeX, and will be vetted by TypeX before
 they are allowed to create new tokens. TypeX will not mint any tokens itself,
 it will approve members to mint and burn tokens.
@@ -159,12 +159,16 @@ is unpaused.
 
 ## Upgrading
 
-The Fiat Token uses the zeppelinos Unstructured-Storage Proxy pattern
+The NATGX Token uses the zeppelinos Unstructured-Storage Proxy pattern
 [https://docs.zeppelinos.org/docs/upgradeability_AdminUpgradeabilityProxy.html].
-[FiatTokenV1.sol](../contracts/FiatTokenV1.sol) is the implementation, the
+[NATGXTokenV1.sol](../contracts/FiatTokenV1.sol) is the implementation, the
 actual token will be a Proxy contract
-([FiatTokenProxy.sol](../contracts/FiatTokenProxy.sol)) which will forward all
-calls to `FiatToken` via delegatecall. This pattern allows TypeX to upgrade the
+
+Note that this is how USDC appears to be deployed currently
+
+
+([NATGXTokenProxy.sol](../contracts/FiatTokenProxy.sol)) which will forward all
+calls to `NATGXToken` via delegatecall. This pattern allows TypeX to upgrade the
 logic of any deployed tokens seamlessly.
 
 - TypeX will upgrade the token via a call to `upgradeTo` or `upgradeToAndCall`
