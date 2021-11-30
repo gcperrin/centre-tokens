@@ -1,4 +1,4 @@
-# Upgrading a CommodityToken
+# DRAFT: Upgrading a CommodityToken
 
 This is the process for creating an upgraded token, deploying the upgraded
 token, and pointing an existing proxy to the upgraded token.

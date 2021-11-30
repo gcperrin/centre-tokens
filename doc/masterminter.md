@@ -1,4 +1,4 @@
-# Master Minter contract
+# DRAFT: Master Minter contract
 
 The Master Minter is a governance contract. It delegates the functionality of the
 `masterMinter` role in the TypeX NATGX contract to multiple addresses. (The

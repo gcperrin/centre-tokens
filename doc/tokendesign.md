@@ -1,4 +1,4 @@
-# TypeX NATGX Token
+# DRAFT: TypeX NATGX Token
 
 The TypeX NATGX Token contract is an ERC-20 compatible token. It allows
 minting/burning of tokens by multiple entities, pausing all activity, freezing
