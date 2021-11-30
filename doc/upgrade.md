@@ -1,4 +1,4 @@
-# Upgrading a FiatToken
+# Upgrading a CommodityToken
 
 This is the process for creating an upgraded token, deploying the upgraded
 token, and pointing an existing proxy to the upgraded token.
@@ -16,18 +16,18 @@ Each situation is addressed in a section below.
 ### New Logic Only
 
 A template for the next upgraded contract for new logic is kept in /contracts
-with the file name FiatTokenV[X].sol where X is the version number. The upgraded
+with the file name CommodityTokenV[X].sol where X is the version number. The upgraded
 contract _must_ inherit from the current contract. For example, if upgrading
 from version 1 to version 2, the contract would have the format:
 
 ```
-import './FiatTokenV1.sol';
+import './CommodityTokenV1.sol';
 
 /**
- \* @title FiatTokenV2
+ \* @title CommodityTokenV2
  \* @dev ERC20 Token backed by fiat reserves
  **/
-contract FiatTokenV2 is FiatTokenV1 {
+contract CommodityTokenV2 is CommodityTokenV1 {
   ...
 }
 
@@ -61,13 +61,13 @@ upgrading from version 1 to version 2. In the example, we add variables newBool,
 newAddress, and newUint, which would be replaced with the real variables added.
 
 ```
-import './FiatTokenV1.sol';
+import './CommodityTokenV1.sol';
 
 /**
- \* @title FiatTokenV2
+ \* @title CommodityTokenV2
  \* @dev ERC20 Token backed by fiat reserves
  **/
-contract FiatTokenV2 is FiatTokenV1 {
+contract CommodityTokenV2 is CommodityTokenV1 {
 
   bool public newBool;
   address public newAddress;
@@ -142,7 +142,7 @@ possibly new logic) were added.
 3. Check that the implementation field of the proxy matches the address of the
    upgraded token by calling web3.eth.getStorageAt(proxy.address, implSlot),
    where implSlot is defined in the contract as a hardcoded field. As of TypeX
-   Fiat Token v1.0.0 that slot is
+   Commodity Token v1.0.0 that slot is
    0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b.
    Alternatively, getImplementation may be called on the proxy with the
    adminAccount.
@@ -158,7 +158,7 @@ possibly new logic) were added.
 3. Check that the implementation field of the proxy matches the address of the
    upgraded token by calling web3.eth.getStorageAt(proxy.address, implSlot),
    where implSlot is defined in the contract as a hardcoded field. As of TypeX
-   Fiat Token v1.0.0 that slot is
+   Commodity Token v1.0.0 that slot is
    0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b.
    Alternatively, getImplementation may be called on the proxy with the admin
    account.

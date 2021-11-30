@@ -30,7 +30,7 @@
 
 4. Using the Admin Key, transfer the proxy admin role to the `V2Upgrader`
    contract address by calling `changeAdmin(address)` method on the
-   `FiatTokenProxy` contract.
+   `CommodityTokenProxy` contract.
 
 5. Send 0.20 USDC to the `V2Upgrader` contract address. (200,000 tokens)
 

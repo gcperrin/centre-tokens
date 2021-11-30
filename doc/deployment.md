@@ -11,8 +11,8 @@ available, but can only be called once per proxy.
 
 ## Deploying the implementation contract
 
-1. Deploy [FiatTokenV1](../contracts/FiatTokenV1.sol)
-2. Initialize the fields in FiatToken via the `initialize` method. The values
+1. Deploy [CommodityTokenV1](../contracts/CommodityTokenV1.sol)
+2. Initialize the fields in CommodityToken via the `initialize` method. The values
    are not important, but this will stop anyone else initializing the roles and
    trying to use it as a token or pass it off as a real TypeX token.
    ```
@@ -27,7 +27,7 @@ available, but can only be called once per proxy.
           throwawayAddress
           )
    ```
-3. Verify that all fields in the FiatToken have been initialized correctly and
+3. Verify that all fields in the CommodityToken have been initialized correctly and
    have the expected values. See [README.validate.md](../validate/validate.js).
 
 ## Deploying a Proxy:
@@ -46,7 +46,7 @@ available, but can only be called once per proxy.
    For details on what these roles can do, see the
    [Token Design Doc](tokendesign.md)
 
-2. Deploy [FiatTokenProxy](../contracts/FiatTokenProxy.sol), passing the address
+2. Deploy [CommodityTokenProxy](../contracts/CommodityTokenProxy.sol), passing the address
    of the deployed implementation contract to the constructor, which will
    initialize the `_implementation` field.
 

@@ -161,13 +161,13 @@ is unpaused.
 
 The NATGX Token uses the zeppelinos Unstructured-Storage Proxy pattern
 [https://docs.zeppelinos.org/docs/upgradeability_AdminUpgradeabilityProxy.html].
-[NATGX TokenV1.sol](../contracts/FiatTokenV1.sol) is the implementation, the
+[NATGX TokenV1.sol](../contracts/CommodityTokenV1.sol) is the implementation, the
 actual token will be a Proxy contract
 
 Note that this is how USDC appears to be deployed currently
 
 
-([NATGX TokenProxy.sol](../contracts/FiatTokenProxy.sol)) which will forward all
+([NATGX TokenProxy.sol](../contracts/CommodityTokenProxy.sol)) which will forward all
 calls to `NATGX Token` via delegatecall. This pattern allows TypeX to upgrade the
 logic of any deployed tokens seamlessly.
 
